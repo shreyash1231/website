@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-
+import Image from "next/image";
 export default function Review() {
   return (
     <section className="w-full flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
@@ -29,16 +29,16 @@ export default function Review() {
                         lg:w-[580px] xl:w-[636px] 
                         aspect-square flex items-center justify-center">
 
-          <img src="/images/Circle.png" alt="Circle"
+          <Image src="/images/Circle.png" alt="Circle"
                className="absolute w-full h-full object-contain" />
 
-          <img src="/images/Circle (1).png" alt="Circle 1"
+          <Image src="/images/Circle (1).png" alt="Circle 1"
                className="absolute w-[80%] h-[80%] object-contain" />
 
-          <img src="/images/Circle (2).png" alt="Circle 2"
+          <Image src="/images/Circle (2).png" alt="Circle 2"
                className="absolute w-[64%] h-[64%] object-contain" />
 
-          <img
+          <Image
             src="/images/1299253_Person_Woman_1080x1920 1.png"
             alt="Person"
             className="relative 
@@ -72,7 +72,7 @@ export default function Review() {
                              shadow-[0px_10px_40px_0px_#002B6B30] bg-white">
               <CardContent className="flex flex-col items-center justify-center 
                                        gap-3 p-5 text-center">
-                <img src="/images/Iconly-Pc-1723800402620 1.png"
+                <Image src="/images/Iconly-Pc-1723800402620 1.png"
                      alt="Showcase Icon"
                      className="w-9 h-9" />
                 <h3 className="font-manrope text-[16px] md:text-[18px] 
@@ -96,7 +96,7 @@ export default function Review() {
                              bg-white shadow-[0px_10px_40px_0px_#002B6B30]">
               <CardContent className="flex items-center justify-center 
                                        gap-3 p-4">
-                <img src="/images/global-search.png"
+                <Image src="/images/global-search.png"
                      alt="Users Icon"
                      className="w-10 h-10" />
                 <div>
@@ -122,7 +122,7 @@ export default function Review() {
                              bg-white shadow-[0px_10px_40px_0px_#002B6B30]">
               <CardContent className="flex items-center justify-center 
                                        gap-3 p-4 text-center lg:text-left">
-                <img src="/images/Frame.png"
+                <Image src="/images/Frame.png"
                      alt="Networking Icon"
                      className="w-10 h-10" />
                 <span className="font-manrope font-bold 
@@ -138,7 +138,7 @@ export default function Review() {
                              shadow-[0px_8px_30px_0px_#002B6B20] bg-white">
               <CardContent className="flex flex-col items-center 
                                        justify-center gap-3 p-5 text-center">
-                <img src="/images/Add documents 1.png"
+                <Image src="/images/Add documents 1.png"
                      alt="Resume Icon"
                      className="w-9 h-9" />
                 <h3 className="font-manrope text-[16px] md:text-[18px] 

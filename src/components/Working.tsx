@@ -1,5 +1,5 @@
 import { Card, CardContent } from "./ui/card";
-
+import Image from "next/image";
 export default function Working() {
   return (
     <section
@@ -96,7 +96,7 @@ export default function Working() {
                   `}
                 >
                   {step.img && (
-                    <img
+                    <Image
                       src={step.img}
                       alt={step.title}
                       className="w-6 h-6 object-contain"
@@ -124,7 +124,7 @@ export default function Working() {
         <div className="relative flex items-end gap-4 lg:gap-6">
 
           {/* Left Image */}
-          <img
+          <Image
             src="/images/Photo (1).png"
             alt="Client 2"
             className="
@@ -136,7 +136,7 @@ export default function Working() {
           />
 
           {/* Main Image */}
-          <img
+          <Image
             src="/images/Photo.png"
             alt="Client 1"
             className="
@@ -149,7 +149,7 @@ export default function Working() {
           />
 
           {/* Floating Image */}
-          <img
+          <Image
             src="/images/Frame 1000004804.png"
             alt="Client 3"
             className="

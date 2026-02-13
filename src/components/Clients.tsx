@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Clients() {
   return (
     <section className="w-full flex flex-col items-center justify-center 
@@ -41,7 +43,7 @@ export default function Clients() {
 
         {/* Image */}
         <div className="mt-8 sm:mt-10 md:mt-14">
-          <img
+          <Image
             src="/images/Frame 1000004850.png"
             alt="Clients"
             className="

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ClientsHeading() {
   return (
     <section className="w-full bg-[#FAFAFA] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
@@ -26,7 +28,7 @@ export default function ClientsHeading() {
           gap-6 
           md:gap-8
         ">
-          <img
+          <Image
             src="/images/Testimonial Text.png"
             alt="Testimonial Text"
             className="
@@ -37,7 +39,7 @@ export default function ClientsHeading() {
             "
           />
 
-          <img
+          <Image
             src="/images/Video.png"
             alt="Video"
             className="

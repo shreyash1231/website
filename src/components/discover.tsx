@@ -1,6 +1,6 @@
 import CardsBlock from "./CardsBlock";
 import { Button } from "./ui/button";
-
+import Image from "next/image";
 export default function Discover() {
   const cardsData = [
     {
@@ -138,7 +138,7 @@ export default function Discover() {
                 transition-colors
               "
             >
-              <img
+              <Image
                 src={role.icon}
                 alt={role.label}
                 className="w-5 h-5 sm:w-6 sm:h-6"

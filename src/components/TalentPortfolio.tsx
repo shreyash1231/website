@@ -2,86 +2,100 @@
 
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+export default function TalentPortfolio() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-export default function TalentProtfolio() {
-  const [activeArrow, setActiveArrow] = useState<"left" | "right" | null>(null);
-  const [offset, setOffset] = useState(0);
+  const images = [
+    "/images/Frame 1000004851.png",
+    "/images/Frame 1000004849.png",
+    "/images/Frame 1000004852.png",
+  ];
 
-  const imageWidth = 461 + 32; // width + gap (gap-8 = 2rem = 32px)
-  const totalImages = 3;
+  const totalImages = images.length;
 
   const handleClick = (direction: "left" | "right") => {
-    setActiveArrow(direction);
-
     if (direction === "right") {
-      setOffset((prev) => Math.max(prev - imageWidth, -(imageWidth * (totalImages - 1))));
+      setCurrentIndex((prev) =>
+        prev === totalImages - 1 ? prev : prev + 1
+      );
     } else {
-      setOffset((prev) => Math.min(prev + imageWidth, 0));
+      setCurrentIndex((prev) => (prev === 0 ? prev : prev - 1));
     }
-
-    setTimeout(() => setActiveArrow(null), 300);
   };
 
   return (
-    <div className="flex flex-col items-center w-full gap-12">
-      {/* Top Section: Heading + Arrows */}
-      <div className="flex items-center justify-center gap-6 w-full">
-        <span className="font-['ABeeZee'] text-[56px] leading-[120%] text-[#1E242C] text-center mr-100">
-          Top Talent portfolio Showcase
-        </span>
+    <section className="w-full flex flex-col items-center gap-12 py-16 px-4 sm:px-6 lg:px-8">
+      
+      {/* Top Section */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1200px] gap-6">
+        
+        <h2 className="font-['ABeeZee'] text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] leading-[120%] text-[#1E242C] text-center md:text-left">
+          Top Talent Portfolio Showcase
+        </h2>
 
-        {/* Left Arrow */}
-        <div
-          onClick={() => handleClick("left")}
-          className={`w-[56px] h-[56px] rounded-full flex items-center justify-center shadow-md cursor-pointer border transition-colors duration-300 ${
-            activeArrow === "left" ? "bg-[#002B6B] border-[#002B6B]" : "bg-white border-gray-300"
-          }`}
-        >
-          <ArrowLeft
-            className={`w-6 h-6 transition-colors duration-300 ${
-              activeArrow === "left" ? "text-white" : "text-black"
-            }`}
-          />
-        </div>
+        <div className="flex items-center gap-4">
+          
+          {/* Left Arrow */}
+          <button
+            onClick={() => handleClick("left")}
+            disabled={currentIndex === 0}
+            className="w-[48px] h-[48px] sm:w-[56px] sm:h-[56px] rounded-full 
+                       flex items-center justify-center shadow-md 
+                       border border-gray-300 bg-white 
+                       disabled:opacity-40 disabled:cursor-not-allowed 
+                       hover:bg-[#002B6B] transition"
+          >
+            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-black hover:text-white" />
+          </button>
 
-        {/* Right Arrow */}
-        <div
-          onClick={() => handleClick("right")}
-          className={`w-[56px] h-[56px] rounded-full flex items-center justify-center shadow-md cursor-pointer transition-colors duration-300 ${
-            activeArrow === "right" ? "bg-[#002B6B]" : "bg-[#002B6B]"
-          }`}
-        >
-          <ArrowRight
-            className={`w-6 h-6 transition-colors duration-300 ${
-              activeArrow === "right" ? "text-white" : "text-white"
-            }`}
-          />
-        </div>
-      </div>
+          {/* Right Arrow */}
+          <button
+            onClick={() => handleClick("right")}
+            disabled={currentIndex === totalImages - 1}
+            className="w-[48px] h-[48px] sm:w-[56px] sm:h-[56px] rounded-full 
+                       flex items-center justify-center shadow-md 
+                       bg-[#002B6B] 
+                       disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          </button>
 
-      {/* Bottom Section: Horizontal Sliding Images */}
-      <div className="overflow-hidden w-full flex justify-center">
-        <div
-          className="flex gap-8 transition-transform duration-700"
-          style={{ transform: `translateX(${offset}px)` }}
-        >
-          <img
-            src="/images/Frame 1000004851.png"
-            alt="Portfolio 1"
-            className="w-[461px] h-[603px] rounded-[20px] object-cover shadow-md"
-          />
-          <img
-            src="/images/Frame 1000004849.png"
-            alt="Portfolio 2"
-            className="w-[461px] h-[603px] rounded-[20px] object-cover shadow-md"
-          />
-          <img
-            src="/images/Frame 1000004852.png"
-            alt="Portfolio 3"
-            className="w-[461px] h-[603px] rounded-[20px] object-cover shadow-md"
-          />
         </div>
       </div>
-    </div>
+
+      {/* Carousel */}
+      <div className="overflow-hidden w-full max-w-[1200px]">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
+        >
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="min-w-full flex justify-center px-2 sm:px-4"
+            >
+              <Image
+                src={src}
+                alt={`Portfolio ${index + 1}`}
+                className="
+                  w-full 
+                  max-w-[320px] 
+                  sm:max-w-[400px] 
+                  md:max-w-[500px] 
+                  lg:max-w-[461px]
+                  h-auto 
+                  rounded-[20px] 
+                  object-cover 
+                  shadow-md
+                "
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
