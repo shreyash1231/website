@@ -7,7 +7,6 @@ const manrope = Manrope({
 });
 
 export default function Explore() {
-  // Array of image file names (from public/images/)
   const images = [
     "Photo Frame.png",
     "Photo Frame (1).png",
@@ -15,59 +14,77 @@ export default function Explore() {
     "Photo Frame (3).png",
   ];
 
-  // Duplicate array for seamless scrolling
   const scrollingImages = [...images, ...images];
 
   return (
-    <div className="w-full flex flex-col items-center text-center pt-12 px-4 md:px-8 lg:px-16">
-      {/* Hero Section */}
-      <span className="font-abezee text-4xl md:text-5xl lg:text-[72px] font-normal leading-[120%] text-[#002B6B]">
+    <section className="w-full flex flex-col items-center text-center 
+                        pt-12 sm:pt-16 md:pt-20 
+                        px-4 sm:px-6 lg:px-8">
+
+      {/* Hero Heading */}
+      <h1 className="
+        font-abezee
+        text-3xl
+        sm:text-4xl
+        md:text-5xl
+        lg:text-6xl
+        xl:text-7xl
+        leading-tight
+        text-[#002B6B]
+      ">
         Study Abroad Made
-      </span>
-      <span className="font-abezee text-4xl md:text-5xl lg:text-[72px] font-normal leading-[120%] text-[#002B6B]">
-        Simple
-      </span>
+        <span className="block">Simple</span>
+      </h1>
 
       {/* Scholarship Info */}
       <div
-        className={`w-full max-w-[430px] h-auto flex flex-col justify-center items-center text-center mt-6 ${manrope.className}`}
+        className={`mt-6 max-w-md sm:max-w-xl md:max-w-2xl ${manrope.className}`}
       >
-        <span className="text-[#414D60] text-[14px] md:text-[16px] leading-[150%]">
-          Scholarships up to ₹85k + Free IELTS/PTE/Duolingo
-        </span>
-        <span className="text-[#414D60] text-[14px] md:text-[16px] leading-[150%]">
-          Coaching
-        </span>
+        <p className="text-[#414D60] text-sm sm:text-base md:text-lg leading-relaxed">
+          Scholarships up to ₹85k + Free IELTS/PTE/Duolingo Coaching
+        </p>
       </div>
 
       {/* Explore Button */}
       <div className="mt-8">
         <Button
-          className="flex items-center justify-center 
-                     w-[155px] md:w-[180px] h-[56px] 
-                     px-6 py-4 
-                     gap-2 
-                     rounded-full 
-                     border border-gray-300 
-                     bg-blue-600 text-white text-sm md:text-base"
+          className="
+            px-8 py-3
+            rounded-full
+            border border-gray-300
+            bg-blue-600
+            text-white
+            text-sm sm:text-base
+            hover:bg-blue-700
+            transition-all
+          "
         >
           Explore
         </Button>
       </div>
 
       {/* Horizontal Auto-Scrolling Images */}
-      <div className="w-full overflow-hidden mt-12">
-        <div className="flex gap-6 justify-center animate-scroll">
+      <div className="w-full overflow-hidden mt-12 sm:mt-16">
+        <div className="flex gap-4 sm:gap-6 animate-scroll w-max">
           {scrollingImages.map((img, index) => (
             <img
               key={index}
               src={`/images/${img}`}
               alt={`Abroad ${index + 1}`}
-              className="w-[200px] sm:w-[240px] md:w-[288px] h-[238px] sm:h-[288px] md:h-[338px] rounded-[20px] object-cover"
+              className="
+                w-[160px]
+                sm:w-[200px]
+                md:w-[240px]
+                lg:w-[280px]
+                aspect-[3/4]
+                rounded-2xl
+                object-cover
+              "
             />
           ))}
         </div>
       </div>
-    </div>
+
+    </section>
   );
 }

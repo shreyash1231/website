@@ -15,48 +15,71 @@ function FAQCard({ step, question, answer }: FAQCardProps) {
 
   return (
     <Card
-      className={`w-full rounded-[20px] border shadow-sm transition-colors ${
-        open ? "bg-[#F1F5FF] border-blue-200" : "bg-white border-gray-200"
+      className={`w-full rounded-2xl border transition-all duration-300 ${
+        open
+          ? "bg-[#F1F5FF] border-blue-200"
+          : "bg-white border-gray-200"
       }`}
     >
-      <CardContent className="flex items-start gap-4 p-6">
+      <CardContent className="flex items-start gap-4 p-4 sm:p-6">
+        
         {/* Step Circle */}
         <div
-          className={`w-[56px] h-[56px] rounded-[48px] flex items-center justify-center font-['Manrope'] font-medium text-[20px] leading-[150%] ${
-            open ? "bg-[#002B6B] text-white" : "bg-gray-100 text-[#002B6B]"
-          }`}
+          className={`flex items-center justify-center 
+                      w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+                      rounded-full 
+                      text-sm sm:text-base md:text-lg
+                      font-medium
+                      transition-colors
+                      ${
+                        open
+                          ? "bg-[#002B6B] text-white"
+                          : "bg-gray-100 text-[#002B6B]"
+                      }`}
         >
           {step < 10 ? `0${step}` : step}
         </div>
 
         {/* Question + Answer */}
-        <div className="flex-1 flex flex-col">
-          <span
-            className={`font-['ABeeZee'] text-[20px] md:text-[24px] leading-[120%] ${
-              open ? "text-[#002B6B] font-semibold" : "text-[#1E242C] font-normal"
+        <div className="flex-1">
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-left w-full"
+          >
+            <h3
+              className={`text-base sm:text-lg md:text-xl leading-tight transition-all ${
+                open
+                  ? "text-[#002B6B] font-semibold"
+                  : "text-[#1E242C] font-normal"
+              }`}
+            >
+              {question}
+            </h3>
+          </button>
+
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              open ? "max-h-96 mt-3" : "max-h-0"
             }`}
           >
-            {question}
-          </span>
-
-          {open && (
-            <span className="mt-2 font-['Manrope'] text-[16px] leading-[150%] text-[#414D60]">
+            <p className="text-sm sm:text-base text-[#414D60] leading-relaxed">
               {answer}
-            </span>
-          )}
+            </p>
+          </div>
         </div>
 
-        {/* Toggle + / - */}
-        <div
-          className="flex items-center justify-center cursor-pointer"
+        {/* Toggle Icon */}
+        <button
           onClick={() => setOpen(!open)}
+          className="flex items-center justify-center shrink-0"
         >
           {open ? (
-            <Minus className="w-6 h-6 text-[#002B6B]" />
+            <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-[#002B6B]" />
           ) : (
-            <Plus className="w-6 h-6 text-[#002B6B]" />
+            <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-[#002B6B]" />
           )}
-        </div>
+        </button>
+
       </CardContent>
     </Card>
   );
@@ -80,12 +103,7 @@ export default function FAQSection() {
         "Go to your dashboard and select 'My Applications' to view the status of each job you have applied for.",
     },
     {
-      question: "How do I create an account on the job board?",
-      answer:
-        "Use the search bar on the homepage to enter keywords related to your skills, job title, or preferred location. You can also use the advanced search filters to narrow down results by industry, job type (full-time, part-time, freelance), and experience level.",
-    },
-    {
-      question: "Is there a cost to use the job board, and what features are free?",
+      question: "Is there a cost to use the job board?",
       answer:
         "Basic job searching and applications are free. Employers may have premium posting options, and candidates can purchase resume-boosting features.",
     },
@@ -96,15 +114,37 @@ export default function FAQSection() {
   const rightFAQs = faqs.slice(mid);
 
   return (
-    <div className="w-full flex flex-col items-center mt-24 gap-12">
-      {/* Heading */}
-      <span className="font-['ABeeZee'] text-[32px] md:text-[56px] leading-[120%] text-[#1E242C] text-left">
-        Frequently asked Questions
-      </span>
+    <section className="w-full flex flex-col items-center 
+                        mt-16 sm:mt-20 md:mt-24 
+                        px-4 sm:px-6 lg:px-8">
 
-      {/* Two-column FAQ layout */}
-      <div className="flex flex-wrap justify-center gap-8 w-full max-w-[1300px]">
-        <div className="flex flex-col gap-6 flex-1 min-w-[300px]">
+      {/* Heading */}
+      <h2 className="
+        text-2xl
+        sm:text-3xl
+        md:text-5xl
+        lg:text-6xl
+        leading-tight
+        text-[#1E242C]
+        text-center
+        md:text-left
+        w-full
+        max-w-7xl
+      ">
+        Frequently Asked Questions
+      </h2>
+
+      {/* FAQ Layout */}
+      <div className="
+        mt-10
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        gap-6 sm:gap-8
+        w-full
+        max-w-7xl
+      ">
+        <div className="flex flex-col gap-6">
           {leftFAQs.map((faq, index) => (
             <FAQCard
               key={index}
@@ -115,7 +155,7 @@ export default function FAQSection() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-6 flex-1 min-w-[300px]">
+        <div className="flex flex-col gap-6">
           {rightFAQs.map((faq, index) => (
             <FAQCard
               key={index + mid}
@@ -126,6 +166,7 @@ export default function FAQSection() {
           ))}
         </div>
       </div>
-    </div>
+
+    </section>
   );
 }

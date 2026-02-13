@@ -1,26 +1,55 @@
 export default function ClientsHeading() {
   return (
-    <div className="w-full flex justify-center mt-8 bg-[#FAFAFA] py-12">
-      <div className="flex flex-col gap-8">
-        {/* Heading above left image */}
-        <span className="font-['ABeeZee'] text-[56px] leading-[120%] text-[#1E242C] text-left">
-          What our clients say
-        </span>
+    <section className="w-full bg-[#FAFAFA] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8">
 
-        {/* Images */}
-        <div className="flex flex-wrap gap-8">
+        {/* Heading */}
+        <h2 className="
+          font-['ABeeZee']
+          text-2xl
+          sm:text-3xl
+          md:text-5xl
+          lg:text-6xl
+          leading-tight
+          text-[#1E242C]
+          text-center
+          md:text-left
+        ">
+          What our clients say
+        </h2>
+
+        {/* Images Container */}
+        <div className="
+          flex 
+          flex-col 
+          md:flex-row 
+          gap-6 
+          md:gap-8
+        ">
           <img
             src="/images/Testimonial Text.png"
             alt="Testimonial Text"
-            className="rounded-[20px] object-cover"
+            className="
+              w-full 
+              md:w-1/2
+              rounded-2xl 
+              object-cover
+            "
           />
+
           <img
             src="/images/Video.png"
             alt="Video"
-            className="rounded-[20px] object-cover"
+            className="
+              w-full 
+              md:w-1/2
+              rounded-2xl 
+              object-cover
+            "
           />
         </div>
+
       </div>
-    </div>
+    </section>
   );
 }

@@ -18,8 +18,8 @@ export default function Home() {
     <Discover/>
     <Review/>
     <Clients/>
-    <Working/>
-    <TalentProtfolio/>
+    {/* <Working/> */}
+    {/* <TalentProtfolio/> */}
     <ClientsHeading/>
     <FAQHeading/>
     <FooterSection/>

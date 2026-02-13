@@ -81,42 +81,91 @@ export default function Discover() {
   ];
 
   return (
-    <div className="w-full bg-[#FAFAFA] flex flex-col justify-center items-center py-12 px-4">
+    <section className="w-full bg-[#FAFAFA] 
+                        flex flex-col items-center 
+                        py-12 sm:py-16 md:py-20 
+                        px-4 sm:px-6 lg:px-8">
+
       {/* Heading */}
-      <span className="font-abezee text-[32px] md:text-[56px] font-normal leading-[120%] text-[#1E242C] text-center">
-        Discover the <br />
-        Emerging Masters
-      </span>
+      <h2 className="
+        font-abezee
+        text-2xl
+        sm:text-3xl
+        md:text-5xl
+        lg:text-6xl
+        leading-tight
+        text-[#1E242C]
+        text-center
+      ">
+        Discover the
+        <span className="block">Emerging Masters</span>
+      </h2>
 
       {/* Subtitle */}
-      <div className="mt-4 px-4 py-2 rounded text-center max-w-[399px]">
-        <span className="font-manrope text-[16px] leading-[150%] text-[#414D60]">
-          Find the best master for your company and boosts <br />
-          your business 10x!
-        </span>
-      </div>
-{/* Roles Row with Icons */}
-<div className="w-full max-w-[1300px] border-b border-gray-300 my-4 mx-auto">
-  <div className="flex flex-wrap justify-center gap-8 py-4">
-    {roles.map((role, index) => (
-      <div
-        key={index}
-        className="flex items-center gap-2 font-manrope text-[16px] font-normal leading-[150%] text-[#6C7787]"
-      >
-        <img
-          src={role.icon}
-          alt={role.label}
-          className="w-6 h-6 opacity-100 rotate-0" // 24x24px, no rotation, full opacity
-        />
-        <span>{role.label}</span>
-      </div>
-    ))}
-  </div>
-</div>
+      <p className="
+        mt-4
+        text-sm
+        sm:text-base
+        md:text-lg
+        text-center
+        text-[#414D60]
+        max-w-md
+        sm:max-w-xl
+        md:max-w-2xl
+      ">
+        Find the best master for your company and boost
+        your business 10x!
+      </p>
 
+      {/* Roles Row */}
+      <div className="w-full max-w-7xl border-b border-gray-300 mt-8">
+        <div className="
+          flex 
+          flex-wrap 
+          justify-center 
+          gap-6 
+          sm:gap-8 
+          py-4
+        ">
+          {roles.map((role, index) => (
+            <div
+              key={index}
+              className="
+                flex items-center gap-2
+                text-sm sm:text-base
+                text-[#6C7787]
+                hover:text-[#1D4ED8]
+                transition-colors
+              "
+            >
+              <img
+                src={role.icon}
+                alt={role.label}
+                className="w-5 h-5 sm:w-6 sm:h-6"
+              />
+              <span>{role.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1300px] mt-8">
+ <div
+  className="
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    md:grid-cols-3
+    lg:grid-cols-4
+    gap-6
+    w-full
+    max-w-7xl
+    mt-10
+    mx-auto
+    justify-items-center
+  "
+>
+
         {cardsData.map((card, index) => (
           <CardsBlock
             key={index}
@@ -132,12 +181,23 @@ export default function Discover() {
 
       {/* View All Button */}
       <Button
-        className="mt-8 w-[144px] h-[48px] flex items-center justify-center
-                   gap-4 rounded-full border border-[#8AB9FF]
-                   bg-white text-[#1D4ED8] text-[16px] font-medium"
+        className="
+          mt-10
+          px-6 py-3
+          rounded-full
+          border border-[#8AB9FF]
+          bg-white
+          text-[#1D4ED8]
+          text-sm sm:text-base
+          font-medium
+          hover:bg-[#8AB9FF]
+          hover:text-white
+          transition-all
+        "
       >
         View All
       </Button>
-    </div>
+
+    </section>
   );
 }

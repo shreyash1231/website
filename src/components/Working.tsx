@@ -1,120 +1,168 @@
-import { Card, CardContent } from "./ui/card"
+import { Card, CardContent } from "./ui/card";
 
 export default function Working() {
   return (
-    <div className="w-full max-w-[1440px] h-auto flex flex-col lg:flex-row justify-between py-12 px-6 md:px-12 lg:py-[88px] lg:px-[100px] mx-auto gap-12">
-      {/* Column 1: Text + Steps */}
-      <div className="flex flex-col justify-center items-start gap-8 w-full lg:w-1/2">
+    <section
+      className="
+        w-full max-w-[1440px] 2xl:max-w-[1600px]
+        mx-auto
+        flex flex-col xl:flex-row
+        items-center xl:items-start
+        justify-between
+        gap-14 sm:gap-16 lg:gap-20
+        py-14 sm:py-20 lg:py-24
+        px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20
+      "
+    >
+      {/* LEFT COLUMN */}
+      <div className="w-full xl:w-1/2 flex flex-col gap-10 lg:gap-14">
+
         {/* Heading */}
-        <span className="font-abezee text-[28px] md:text-[40px] lg:text-[56px] font-normal leading-[120%] text-[#1E242C]">
+        <h2
+          className="
+            font-abezee
+            text-[26px] sm:text-[34px] md:text-[42px] lg:text-[50px] xl:text-[56px]
+            leading-[120%]
+            text-[#1E242C]
+            text-center xl:text-left
+          "
+        >
           How It Works
-        </span>
+        </h2>
 
-        {/* Step 01 */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-          <span className="font-['ABeeZee'] text-[72px] md:text-[90px] lg:text-[108px] leading-[120%] opacity-15 text-[#002B6B] flex items-center justify-center">
-            01
-          </span>
+        {/* STEPS */}
+        {[
+          {
+            number: "01",
+            title: "Profile Review",
+            text: "Get insights about your profile and reviews",
+            bg: "bg-[#E1E9FE]",
+            img: "/images/solar_login-3-broken (1).png",
+          },
+          {
+            number: "02",
+            title: "Test Prep",
+            text: "Add your resume, videos, and more",
+            bg: "bg-[#FFEED2]",
+            img: "/images/solar_login-3-broken (2).png",
+            reverse: true,
+          },
+          {
+            number: "03",
+            title: "Fly with us",
+            text: "Let employers find and contact you",
+            bg: "bg-[#F6E2FF]",
+          },
+        ].map((step, index) => (
+          <div
+            key={index}
+            className={`
+              flex flex-col sm:flex-row
+              ${step.reverse ? "sm:flex-row-reverse" : ""}
+              items-center sm:items-start
+              gap-6
+            `}
+          >
+            {/* Big Number */}
+            <span
+              className="
+                font-['ABeeZee']
+                text-[55px] sm:text-[75px] md:text-[90px] lg:text-[100px] xl:text-[108px]
+                leading-none
+                opacity-15
+                text-[#002B6B]
+              "
+            >
+              {step.number}
+            </span>
 
-        <Card className="w-full sm:w-[427px] rounded-[20px] border border-[#EDEEF0] shadow-[10px_25px_100px_0px_rgba(0,43,107,0.25)] bg-white">
-          <CardContent className="flex items-center gap-4 p-4">
-            {/* Circle with Image */}
-            <div className="w-[56px] h-[56px] rounded-full bg-[#E1E9FE] flex items-center justify-center p-4">
-              <img
-                src="/images/solar_login-3-broken (1).png"
-                alt="Profile Icon"
-                className="w-full h-full object-contain"
-              />
-            </div>
+            {/* Card */}
+            <Card
+              className="
+                w-full
+                max-w-[420px] sm:max-w-[450px]
+                rounded-[20px]
+                border border-[#EDEEF0]
+                shadow-[10px_25px_80px_rgba(0,43,107,0.25)]
+              "
+            >
+              <CardContent className="flex items-center gap-4 p-5">
+                <div
+                  className={`
+                    w-[50px] h-[50px] sm:w-[56px] sm:h-[56px]
+                    rounded-full
+                    ${step.bg}
+                    flex items-center justify-center
+                  `}
+                >
+                  {step.img && (
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      className="w-6 h-6 object-contain"
+                    />
+                  )}
+                </div>
 
-            {/* Text Section */}
-            <div className="flex flex-col">
-              <span className="font-['ABeeZee'] text-[20px] md:text-[24px] leading-[120%] text-[#1E242C]">
-                Profile Review
-              </span>
-              <span className="font-['Manrope'] text-[14px] md:text-[16px] leading-[150%] text-[#414D60]">
-                Get insights about your profile and reviews
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-        </div>
-
-        {/* Step 02 */}
-        <div className="flex flex-col sm:flex-row-reverse items-center sm:items-start gap-4 sm:gap-6">
-          <span className="font-['ABeeZee'] text-[72px] md:text-[90px] lg:text-[108px] leading-[120%] opacity-15 text-[#002B6B] flex items-center justify-center">
-            02
-          </span>
-
-          <Card className="w-full sm:w-[427px] rounded-[20px] border border-[#EDEEF0] shadow-[10px_25px_100px_0px_rgba(0,43,107,0.25)] bg-white">
-            <CardContent className="flex items-center gap-4 p-4">
-              {/* Circle with Icon */}
-              <div className="w-[56px] h-[56px] rounded-full bg-[#FFEED2] flex items-center justify-center p-4">
-                <img
-                  src="/images/solar_login-3-broken (2).png"
-                  alt="Test Prep Icon"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-              {/* Text Section */}
-              <div className="flex flex-col">
-                <span className="font-['ABeeZee'] text-[20px] md:text-[24px] leading-[120%] text-[#1E242C]">
-                  Test Prep
-                </span>
-                <span className="font-['Manrope'] text-[14px] md:text-[16px] leading-[150%] text-[#414D60]">
-                  Add your resume, videos, and more
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Step 03 */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-          <span className="font-['ABeeZee'] text-[72px] md:text-[90px] lg:text-[108px] leading-[120%] opacity-15 text-[#002B6B] flex items-center justify-center">
-            03
-          </span>
-
-          <Card className="w-full sm:w-[427px] rounded-[20px] border border-[#EDEEF0] shadow-[10px_25px_100px_0px_rgba(0,43,107,0.25)] bg-white">
-            <CardContent className="flex items-center gap-4 p-4">
-              <div className="w-[56px] h-[56px] rounded-full bg-[#F6E2FF] flex items-center justify-center"></div>
-              <div className="flex flex-col">
-                <span className="font-['ABeeZee'] text-[20px] md:text-[24px] leading-[120%] text-[#1E242C]">
-                  Fly with us
-                </span>
-                <span className="font-['Manrope'] text-[14px] md:text-[16px] leading-[150%] text-[#414D60]">
-                  Let employers find and contact you
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                <div>
+                  <h3 className="font-['ABeeZee'] text-[18px] sm:text-[20px] md:text-[22px] text-[#1E242C]">
+                    {step.title}
+                  </h3>
+                  <p className="font-['Manrope'] text-[13px] sm:text-[14px] md:text-[15px] text-[#414D60]">
+                    {step.text}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        ))}
       </div>
 
-      {/* Column 2: Images */}
-      <div className="flex flex-col gap-4 w-full lg:w-1/2 relative">
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center sm:items-start">
+      {/* RIGHT COLUMN */}
+      <div className="w-full xl:w-1/2 flex justify-center relative mt-10 xl:mt-0">
+
+        <div className="relative flex items-end gap-4 lg:gap-6">
+
+          {/* Left Image */}
           <img
             src="/images/Photo (1).png"
             alt="Client 2"
-            className="w-[180px] md:w-[250px] h-[280px] md:h-[395px] rounded-[30px] object-cover p-2 md:p-4"
+            className="
+              w-[120px] sm:w-[170px] md:w-[210px] lg:w-[240px]
+              h-auto
+              rounded-[25px] lg:rounded-[30px]
+              object-cover
+            "
           />
+
+          {/* Main Image */}
           <img
             src="/images/Photo.png"
             alt="Client 1"
-            className="w-[250px] md:w-[400px] h-[360px] md:h-[560px] rounded-[20px] object-cover"
+            className="
+              w-[200px] sm:w-[300px] md:w-[350px] lg:w-[400px] xl:w-[430px]
+              h-auto
+              rounded-[18px] lg:rounded-[20px]
+              object-cover
+              shadow-xl
+            "
           />
-        </div>
 
-        <div className="flex justify-center relative">
+          {/* Floating Image */}
           <img
             src="/images/Frame 1000004804.png"
             alt="Client 3"
-            className="w-[220px] md:w-[487px] h-[70px] md:h-[160px] p-2 md:p-4 object-cover relative z-10 -mt-[180px] sm:-mt-[180px] sm:-ml-[230px] lg:-ml-[230px]"
+            className="
+              absolute
+              bottom-[-15px] sm:bottom-[-25px] md:bottom-[-30px]
+              left-1/2 -translate-x-1/2
+              w-[180px] sm:w-[250px] md:w-[300px] lg:w-[340px]
+              h-auto
+              shadow-lg
+            "
           />
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
